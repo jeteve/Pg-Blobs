@@ -14,6 +14,9 @@ pgblobs_dbh.
 
 Note that blob management in postgresql do not work outside a transaction.
 
+Blobs are just numeric OIDs in postgresql. You will have to store them in a classic OID table column
+for later retrieval.
+
 Example:
 
     package My::DB;
