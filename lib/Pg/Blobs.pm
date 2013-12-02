@@ -1,5 +1,5 @@
 package Pg::Blobs;
-use Moose::Role;
+use Moose::Role 2.0401;
 
 requires 'pgblobs_dbh';
 
@@ -151,7 +151,7 @@ sub pgblobs_fetch_blob{
     my $content ; 
     my $buf = '' ;
     # Read by chunks of 1024
-    while( my $nbytes = $dbh->func($fh , $buf, 1024 , 'lo_read') ){   
+    while( my $nbytes = $dbh->func($fh , $buf, 1024 , 'lo_read') ){
         $content .= substr($buf, 0 , $nbytes );
     }
     return $content ;
