@@ -12,11 +12,13 @@ sub pgblobs_dbh{ return shift->dbh(); }
 
 package main;
 
-eval{ require Test::postgresql;};
-if( $@ ){
-  plan skip_all => 'No Test::postgresql';
-  done_testing();
-};
+BEGIN{
+  eval{ require Test::postgresql;};
+  if( $@ ){
+    plan skip_all => 'No Test::postgresql';
+    done_testing();
+  };
+}
 
 diag("Building new Test::postgresql");
 my $pgsql = Test::postgresql->new();
